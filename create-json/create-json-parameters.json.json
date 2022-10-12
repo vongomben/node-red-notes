@@ -1,0 +1,212 @@
+[
+    {
+        "id": "f9d5fea17c2c9af5",
+        "type": "inject",
+        "z": "1ae94b859e627067",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Davide",
+        "payloadType": "str",
+        "x": 330,
+        "y": 1620,
+        "wires": [
+            [
+                "1255f79ce02bb172"
+            ]
+        ]
+    },
+    {
+        "id": "989e19a0b6cf335a",
+        "type": "debug",
+        "z": "1ae94b859e627067",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "1255f79ce02bb172",
+        "type": "change",
+        "z": "1ae94b859e627067",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"nome\":\"prof\",\"test\":$$.payload}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 1620,
+        "wires": [
+            [
+                "989e19a0b6cf335a"
+            ]
+        ]
+    },
+    {
+        "id": "5b0ab9ec6d12546c",
+        "type": "template",
+        "z": "1ae94b859e627067",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\"nome\":\"prof\",\"test\":\"{{payload}}\"} ",
+        "output": "json",
+        "x": 560,
+        "y": 1680,
+        "wires": [
+            [
+                "5f1202308e343820"
+            ]
+        ]
+    },
+    {
+        "id": "0aa4fada9b6876bb",
+        "type": "inject",
+        "z": "1ae94b859e627067",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Davide",
+        "payloadType": "str",
+        "x": 330,
+        "y": 1680,
+        "wires": [
+            [
+                "5b0ab9ec6d12546c"
+            ]
+        ]
+    },
+    {
+        "id": "5f1202308e343820",
+        "type": "debug",
+        "z": "1ae94b859e627067",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 1680,
+        "wires": []
+    },
+    {
+        "id": "a2d541f9171db3e3",
+        "type": "inject",
+        "z": "1ae94b859e627067",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Davide",
+        "payloadType": "str",
+        "x": 330,
+        "y": 1740,
+        "wires": [
+            [
+                "3fd7b788e1f94b0f"
+            ]
+        ]
+    },
+    {
+        "id": "3a2fffed468a6569",
+        "type": "debug",
+        "z": "1ae94b859e627067",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 1740,
+        "wires": []
+    },
+    {
+        "id": "3fd7b788e1f94b0f",
+        "type": "function",
+        "z": "1ae94b859e627067",
+        "name": "",
+        "func": "msg.payload = {\"nome\":\"prof\",\"test\":msg.payload}; \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 1740,
+        "wires": [
+            [
+                "3a2fffed468a6569"
+            ]
+        ]
+    },
+    {
+        "id": "3ea63e8c9a136b3c",
+        "type": "comment",
+        "z": "1ae94b859e627067",
+        "name": "Editing JSON parameters on the go (in 3 ways)",
+        "info": "",
+        "x": 560,
+        "y": 1540,
+        "wires": []
+    }
+]

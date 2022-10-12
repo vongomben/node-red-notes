@@ -1,0 +1,146 @@
+[
+    {
+        "id": "8e7d56e8e4ad9ebf",
+        "type": "http request",
+        "z": "1ae94b859e627067",
+        "name": "API Call",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.fisenko.net/v1/quotes/en/random",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 560,
+        "y": 2760,
+        "wires": [
+            [
+                "90fc6161296237fb",
+                "3a5fbcf3c9279be7",
+                "400abf7f8e21e388"
+            ]
+        ]
+    },
+    {
+        "id": "90fc6161296237fb",
+        "type": "change",
+        "z": "1ae94b859e627067",
+        "name": "jsonata",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "'Text is: ' & payload.text & ' Author is' & payload.author.name",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 2740,
+        "wires": [
+            [
+                "34497009a4df4458"
+            ]
+        ]
+    },
+    {
+        "id": "b116d48a5381c8ca",
+        "type": "comment",
+        "z": "1ae94b859e627067",
+        "name": "Concatenate an API call (in 3 ways)",
+        "info": "",
+        "x": 700,
+        "y": 2620,
+        "wires": []
+    },
+    {
+        "id": "745efaf37c3f4ffc",
+        "type": "inject",
+        "z": "1ae94b859e627067",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 480,
+        "y": 2700,
+        "wires": [
+            [
+                "8e7d56e8e4ad9ebf"
+            ]
+        ]
+    },
+    {
+        "id": "3a5fbcf3c9279be7",
+        "type": "template",
+        "z": "1ae94b859e627067",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Text is: {{payload.text}} \n\nAuthor: {{payload.author.name}}",
+        "output": "str",
+        "x": 740,
+        "y": 2700,
+        "wires": [
+            [
+                "34497009a4df4458"
+            ]
+        ]
+    },
+    {
+        "id": "34497009a4df4458",
+        "type": "debug",
+        "z": "1ae94b859e627067",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 2720,
+        "wires": []
+    },
+    {
+        "id": "400abf7f8e21e388",
+        "type": "function",
+        "z": "1ae94b859e627067",
+        "name": "",
+        "func": "var t1 = 'Text is:';\nvar t2 = msg.payload.text; \nvar t3 = ' Author: ';\nvar t4 =  msg.payload.author.name;\n\nmsg = t1 + t2 + t3 + t4;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 2780,
+        "wires": [
+            [
+                "34497009a4df4458"
+            ]
+        ]
+    }
+]
